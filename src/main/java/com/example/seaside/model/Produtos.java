@@ -17,6 +17,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @AllArgsConstructor
 @Table(name = "Cadastro")
 public class Produtos {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO) 
     private Integer id;
@@ -34,4 +35,5 @@ public class Produtos {
     private float valor;
     
     private String vendido;
+    
 }
