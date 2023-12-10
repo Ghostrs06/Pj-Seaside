@@ -1,0 +1,20 @@
+.navbar {
+    background: #121214;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    box-shadow: 3px 3px 10px #121214;
+    margin-bottom: 40px;
+}
+
+.navbar h1 {
+    color: dodgerblue;
+    text-shadow: 3px 3px 20px dodgerblue;
+}
+
+.navbar strong {
+    color: #fff;
+    text-shadow: 3px 3px 20px #fff;
+}
+

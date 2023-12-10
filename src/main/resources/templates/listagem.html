@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns="w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+              integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+        <link rel="stylesheet" href="/table.css">
+        <link rel="stylesheet" href="/global.css">
+        <link rel="stylesheet" href="/navbar.css">
+        <title>Seaside Manegement | Home</title>
+    </head>
+
+    <body>
+        <nav class="navbar">
+            <h1>Seaside<strong>Manegement</strong></h1>
+        </nav>
+
+        <main id="table-produtos">
+            <nav id="navbar-produtos">
+                <div>
+                    <input type="text" name="search" placeholder="Pesquisar" id="inputCadastro">
+                </div>
+                <div class="div-buttons">
+                    <a th:href="@{/cadastro}"><button type="submit" th:href="@{/cadastro}">Cadastrar Produto</button></a>
+                </div>
+            </nav>
+            <table class="table table-striped table-dark">
+                <thead>
+                    <tr>
+                        <th scope="col" id="idProduto">Id</th>
+                        <th scope="col" id="nomeProduto">Nome</th>
+                        <th scope="col" id="quantidadeProduto">Código</th>
+                        <th scope="col" id="datafProduto">Data Fabricação</th>
+                        <th scope="col" id="datavProduto">Data Vencimento</th>
+                        <th scope="col">Valor R$</th>
+                        <th scope="col">Vendido</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="produto : ${lista}">
+                        <td scope="row" th:text="${produto.id}"></td>
+                        <td th:text="${produto.nome}"></td>
+                        <td th:text="${produto.cod}"></td>
+                        <td th:text="${#dates.format(produto.dataFabricacao, 'dd/MM/yyyy')}"></td>
+                        <td th:text="${#dates.format(produto.dataVencimento, 'dd/MM/yyyy')}"></td>
+                        <td th:text="${produto.valor}"></td>
+                        <td th:text="${produto.vendido}"></td>
+                        <td>
+                            <a th:href="@{/venda}"><button type="button" class="btn btn-outline-info" th:href="@{/venda}">Vender Produto</button></a>
+                            <a th:href="@{'/excluir?id=' + ${produto.id}}"><button type="button" class="btn btn-outline-info" th:href="@{'/excluir?id=' + ${produto.id}}">Exluir Produto</button></a>
+                            <a th:href="@{'/alterar?id=' + ${produto.id}}"><button type="button" class="btn btn-outline-info" th:href="@{'/alterar?id=' + ${produto.id}}">Editar Produto</button></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </main>
+
+        <main id="table-vendas">
+            <nav id="navbar-vendas">
+                <input type="text" name="search" placeholder="Pesquisar" id="inputVendas">
+            </nav>
+            <table class="table table-striped table-dark">
+                <thead>
+                    <tr>
+                        <th scope="col" id="idProduto">Id</th>
+                        <th scope="col" id="nomeProduto">Nome</th>
+                        <th scope="col" id="dataVenda">Data Venda</th>
+                        <th scope="col" id="Codigo">Código</th>
+                        <th scope="col" id="compradorProduto">Comprador</th>
+                        <th scope="col">Total R$</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="venda : ${listavenda}">
+                        <td scope="row" th:text="${venda.id}"></td>
+                        <td th:text="${venda.nome}"></td>
+                        <td th:text="${#dates.format(venda.dataVenda, 'dd/MM/yyyy')}"></td>
+                        <td th:text="${venda.cod}"></td>
+                        <td th:text="${venda.comprador}"></td>
+                        <td th:text="${venda.total}"></td>
+                        <td>
+                            <a th:href="@{'/excluirVenda?id=' + ${venda.id}}"><button type="button" class="btn btn-outline-info" th:href="@{'/excluirVenda?id=' + ${venda.id}}">Exluir Venda</button></a>
+                            <a th:href="@{'/alterarVenda?id=' + ${venda.id}}"><button type="button" class="btn btn-outline-info" th:href="@{'/alterarVenda?id=' + ${venda.id}}">Editar Venda</button></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </main>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const inputCadastro = document.getElementById('inputCadastro');
+                const tableRows = document.querySelectorAll('#table-produtos tbody tr');
+
+                inputCadastro.addEventListener('input', function () {
+                    const searchText = inputCadastro.value.toLowerCase();
+
+                    tableRows.forEach(function (row) {
+                        const rowData = row.innerText.toLowerCase();
+
+                        if (rowData.includes(searchText)) {
+                            row.style.display = '';
+                        } else {
+                            row.style.display = 'none';
+                        }
+                    });
+                });
+            });
+
+            document.addEventListener('DOMContentLoaded', function () {
+                const inputVendas = document.getElementById('inputVendas');
+                const tableRows = document.querySelectorAll('#table-vendas tbody tr');
+
+                inputVendas.addEventListener('input', function () {
+                    const searchText = inputVendas.value.toLowerCase();
+
+                    tableRows.forEach(function (row) {
+                        const rowData = row.innerText.toLowerCase();
+
+                        if (rowData.includes(searchText)) {
+                            row.style.display = '';
+                        } else {
+                            row.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        </script>
+        <script>
+            function verificarProdutosProximosVencimento() {
+                const linhasProdutos = document.querySelectorAll('table tbody tr');
+
+                const limiteDias = 7;
+
+                linhasProdutos.forEach(function (linhaProduto) {
+                    const dataVencimento = linhaProduto.querySelector('td:nth-child(5)').textContent;
+
+                    const dataVencimentoDate = new Date(dataVencimento);
+
+                    const dataAtual = new Date();
+
+                    const diferencaTempo = dataVencimentoDate.getTime() - dataAtual.getTime();
+
+                    const diasRestantes = Math.ceil(diferencaTempo / (1000 * 60 * 60 * 24));
+
+                    if (diasRestantes <= limiteDias) {
+                        const nomeProduto = linhaProduto.querySelector('td:nth-child(2)').textContent;
+                        const codigoProduto = linhaProduto.querySelector('td:nth-child(3)').textContent;
+                        alert(`Produto perto do vencimento!\nNome: ${nomeProduto}\nCódigo: ${codigoProduto}\nData de Vencimento: ${dataVencimento}`);
+                    }
+                });
+            }
+
+            window.onload = verificarProdutosProximosVencimento;
+        </script>
+    </body>
+</html>

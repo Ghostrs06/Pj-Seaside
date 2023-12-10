@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns="w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/telaini.css">
+        <link rel="stylesheet" href="/global.css">
+        <link rel="stylesheet" href="/navbar.css">
+        <title>Seaside Manegement | Home</title>
+    </head>
+    <body>
+        <nav class="navbar">
+            <h1>Seaside<strong>Manegement</strong></h1>
+        </nav>
+
+        <main>
+            <article>
+                <a th:href="@{/listagem}"><button th:href="@{/listagem}">Lista de Produtos</button></a>
+                <a th:href="@{/cadastro}"><button th:href="@{/listagem}">Cadastro de Produtos</button></a>
+            </article>
+        </main>
+    </body>
+</html>

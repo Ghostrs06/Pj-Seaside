@@ -1,0 +1,34 @@
+main {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button {
+    background-color: #00ff26;
+    border: none;
+    outline: none;
+    padding: 15px;
+    border-radius: 20px;
+    font: normal bold 17px Helvetica;
+    letter-spacing: 2px;
+    margin-left: 50px;
+    cursor: pointer;
+    transition: .7s;
+}
+
+button:hover {
+    background-color: #3cff00;
+    box-shadow: 3px 3px 20px #3cff00;
+    transform: scale(1.2);
+}
+
+@media only screen and (max-width: 768px) {
+    button {
+        margin: 20px 30%;
+    }
+}
+
+

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns="w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/conteiner-cards.css">
+        <link rel="stylesheet" href="/global.css">
+        <link rel="stylesheet" href="/navbar.css">
+        <title>Seaside Manegement| Venda de Produtos</title>
+    </head>
+    <body>
+        <nav class="navbar">
+            <h1>Seaside<strong>Manegement</strong></h1>
+        </nav>
+        <main class="conteiner-card">
+            <form id="login-form" th:action="@{/gravarvenda}" th:object="${venda}" method="post">
+                <h1>Venda</h1>
+                <div class="div-inputs">
+                    <input type="text" name="nomeProduto" class="inputs" required th:field="${venda.nome}">
+                    <label for="nomeProduto" class="label-input">Nome Produto</label>
+                </div>
+                <div class="div-inputs">
+                    <input type="date" name="dataVenda" class="inputs" required th:field="${venda.dataVenda}"> 
+                    <label for="dataVenda" class="label-input-date">Data Venda</label>
+                </div>
+                <div class="div-inputs">
+                    <input type="text" name="cod" class="inputs" required th:field="${venda.cod}">
+                    <label for="cod" class="label-input">Código do produto</label>
+                </div>
+                <div class="div-inputs">
+                    <input type="text" name="comprador" class="inputs" required th:field="${venda.comprador}">
+                    <label for="comprador" class="label-input">Comprador</label>
+                </div>
+                <div class="div-inputs">
+                    <input type="number" name="total" class="inputs" required>
+                    <label for="total" class="label-input">Total</label>
+                </div>
+                <div class="button">
+                    <input type="submit" value="Vender" class="inputButton">
+                </div>
+            </form>
+        </main>
+    </body>
+</html>
+

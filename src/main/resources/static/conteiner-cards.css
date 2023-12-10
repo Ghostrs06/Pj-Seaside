@@ -1,0 +1,85 @@
+.conteiner-card {
+    height: 85vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#login-form {
+    background-color: #121214;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+h1 {
+    color: #f1f8f1;
+    text-align: center;
+    font-weight: 600;
+}
+
+.div-inputs {
+    position: relative;
+    border-bottom: 1px solid #f1f8f1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+}
+.inputs {
+    position: relative;
+    background-color: transparent;
+    width: 300px;
+    border: none;
+    outline: none;
+    padding: 8px;
+    color: #f1f8f1;
+    font-size: 15px;
+    letter-spacing: 2px;
+}
+.label-input {
+    color: #f1f8f1;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    pointer-events: none;
+    transition: .5s;
+    font: normal bold 17px Helvetica;
+}
+.label-input-date {
+    color: #f1f8f1;
+    position: absolute;
+    top: -5px;
+    left: 10px;
+    font: normal bold 12px Helvetica;
+}
+
+.inputs:focus ~ .label-input,
+.inputs:valid ~ .label-input {
+    top: -5px;
+    font-size: 12px;
+    color: dodgerblue;
+}
+
+.inputButton {
+    background: transparent;
+    color: dodgerblue;
+    width: 100%;
+    padding: 8px;
+    margin-top: 10px;
+    border: 1px solid #fff;
+    border-radius: 20px;
+    cursor: pointer;
+    font: normal 600 16px Helvetica;
+    letter-spacing: 2px;
+    transition: .9s;
+}
+
+.inputButton:hover {
+    transition: .9s;
+    background: dodgerblue;
+    border: 1px solid dodgerblue;
+    transform: scale(1.1);
+    color: #f1f8f1;
+}
+
