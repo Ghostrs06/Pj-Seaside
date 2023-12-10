@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class seasideController {
+    
     @Autowired
     produtosService produtosService;
     
@@ -85,4 +86,5 @@ public class seasideController {
         model.addAttribute("venda", vendaEncontrado);
         return "alterarVenda";
     }
+    
 }

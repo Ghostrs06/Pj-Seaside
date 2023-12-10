@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/venda")
 public class vendasController {
+    
     @Autowired
     vendasService vendasservice;
     
@@ -50,4 +51,5 @@ public class vendasController {
         vendasservice.excluir(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+    
 }
